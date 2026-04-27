@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>课程规划方案 · 曾子嫣</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a4f8b;
+    --navy-mid: #1e5a9e;
+    --navy-light: #2468b2;
+    --gold: #c9973c;
+    --gold-light: #e8c06a;
+    --gold-pale: #fdf3e0;
+    --teal: #1a7a6e;
+    --teal-light: #e8f5f3;
+    --cream: #faf8f4;
+    --border: #e8e0d2;
+    --text: #1a1a2e;
+    --muted: #6b7280;
+    --red: #c0392b;
+    --green: #1a7a6e;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'Noto Sans SC', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  /* Header */
+  .page-header {
+    background: var(--navy);
+    padding: 32px 48px 28px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::before {
+    content: '';
+    position: absolute;
+    right: -40px;
+    top: -40px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(201,151,60,0.12);
+  }
+  .page-header::after {
+    content: '';
+    position: absolute;
+    right: 80px;
+    bottom: -60px;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: rgba(201,151,60,0.08);
+  }
+
+  .avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: #163d6e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 3px solid rgba(255,255,255,0.2);
+  }
+
+  .header-info { flex: 1; }
+  .header-name {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+  .header-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 1px;
+  }
+
+  .header-badge {
+    background: rgba(201,151,60,0.2);
+    border: 1px solid rgba(201,151,60,0.4);
+    border-radius: 8px;
+    padding: 10px 20px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .header-badge .score-big {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--gold-light);
+    line-height: 1;
+  }
+  .header-badge .score-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 4px;
+    letter-spacing: 1px;
+  }
+
+  .header-brand-mark {
+    flex-shrink: 0;
+    text-align: center;
+  }
+  .brand-logo {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 3px;
+    line-height: 1;
+  }
+  .brand-sub {
+    font-size: 9px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 1px;
+    margin-top: 5px;
+  }  .header-divider {
+    width: 1px;
+    height: 48px;
+    background: rgba(255,255,255,0.2);
+    flex-shrink: 0;
+  }
+
+  /* Main layout */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 32px 60px;
+  }
+
+  .section-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--navy);
+    padding-left: 12px;
+    border-left: 3px solid var(--gold);
+    margin-bottom: 16px;
+    margin-top: 28px;
+    letter-spacing: 1px;
+  }
+
+  /* Score grid */
+  .score-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 4px;
+  }
+
+  .score-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 12px;
+    text-align: center;
+  }
+  .score-card .dim {
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+  }
+  .score-card .val {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--navy);
+  }
+  .score-card .total {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .score-card .bar-wrap {
+    background: #f0eee8;
+    border-radius: 3px;
+    height: 5px;
+    margin-top: 10px;
+    overflow: hidden;
+  }
+  .score-card .bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: var(--navy-light);
+    transition: width 1s ease;
+  }
+  .score-card.strong .bar-fill { background: var(--teal); }
+  .score-card.weak .bar-fill { background: #d97706; }
+
+  /* Feedback card */
+  .feedback-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin-bottom: 6px;
+  }
+
+  .feedback-row {
+    display: flex;
+    gap: 16px;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--border);
+    align-items: flex-start;
+  }
+  .feedback-row:last-child { border-bottom: none; }
+  .feedback-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .fi-orange { background: #fff3e0; color: #d97706; }
+  .fi-blue   { background: #e8f0fe; color: #1a5fb4; }
+  .fi-green  { background: var(--teal-light); color: var(--teal); }
+  .fi-red    { background: #fce8e6; color: #c0392b; }
+
+  .feedback-text .label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+  .feedback-text .desc { font-size: 13px; color: #4a5568; line-height: 1.6; }
+
+  /* Teacher note */
+  .teacher-note {
+    background: #f0f7ff;
+    border-left: 3px solid #4a90d9;
+    border-radius: 0 10px 10px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 13px;
+    color: #2c4a6e;
+    line-height: 1.7;
+  }
+  .teacher-note strong { color: #1a3a5c; }
+
+  /* Learning path timeline */
+  .timeline {
+    position: relative;
+    padding-left: 28px;
+    margin: 8px 0;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 10px;
+    bottom: 10px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--navy-light), var(--gold));
+  }
+  .tl-item {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  .tl-dot {
+    position: absolute;
+    left: -25px;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid var(--navy-light);
+    background: #fff;
+  }
+  .tl-item.active .tl-dot {
+    background: var(--gold);
+    border-color: var(--gold);
+  }
+  .tl-item.final .tl-dot {
+    background: var(--navy);
+    border-color: var(--navy);
+    width: 16px;
+    height: 16px;
+    left: -26px;
+  }
+  .tl-body {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 18px;
+  }
+  .tl-title {
+    font-weight: 600;
+    color: var(--navy);
+    font-size: 14px;
+    margin-bottom: 3px;
+  }
+  .tl-sub {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .tl-tag {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 9px;
+    border-radius: 12px;
+    font-weight: 500;
+    margin-top: 6px;
+  }
+  .tag-now { background: #fff3e0; color: #b45309; border: 1px solid #f9d99b; }
+  .tag-next { background: var(--teal-light); color: var(--teal); border: 1px solid #a8d8d2; }
+  .tag-goal { background: #e8eaf6; color: #3949ab; border: 1px solid #b3baf7; }
+
+  /* Pricing section */
+  .plan-box {
+    background: #fff;
+    border: 1.5px solid var(--navy-light);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+
+  .plan-header {
+    background: var(--navy);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .plan-header h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 1px;
+    flex: 1;
+  }
+  .plan-tag {
+    background: var(--gold);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+  }
+
+  .plan-body { padding: 20px 24px; }
+
+  .course-row {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--border);
+    gap: 12px;
+  }
+  .course-row:last-child { border-bottom: none; }
+
+  .course-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+  .ci-navy { background: #e8edf5; }
+  .ci-teal { background: var(--teal-light); }
+
+  .course-info { flex: 1; }
+  .course-name {
+    font-weight: 600;
+    color: var(--navy);
+    font-size: 14px;
+  }
+  .course-detail {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 1px;
+  }
+
+  .course-price {
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .price-original {
+    font-size: 11px;
+    color: var(--muted);
+    text-decoration: line-through;
+  }
+  .price-main {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  .total-row {
+    background: var(--gold-pale);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    margin-top: 16px;
+  }
+  .total-label {
+    flex: 1;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .discount-badge {
+    background: var(--red);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 6px;
+    margin-right: 12px;
+  }
+  .total-price {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .total-unit { font-size: 13px; color: var(--muted); margin-left: 2px; }
+
+  /* Value items */
+  .value-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 4px;
+  }
+  .value-item {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .value-icon {
+    font-size: 16px;
+    margin-top: 1px;
+    flex-shrink: 0;
+  }
+  .value-text .vt { font-size: 12px; font-weight: 600; color: var(--navy); }
+  .value-text .vs { font-size: 11px; color: var(--muted); margin-top: 1px; }
+
+  /* Consultant note */
+  .consultant-note {
+    background: var(--navy);
+    border-radius: 16px;
+    padding: 22px 28px;
+    margin-top: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .consultant-note::before {
+    content: '"';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 80px;
+    color: rgba(201,151,60,0.2);
+    line-height: 1;
+  }
+  .cn-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gold-light);
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+  .cn-text {
+    font-size: 13px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.9;
+  }
+  .cn-sig {
+    margin-top: 16px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    text-align: right;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 12px;
+  }
+
+  /* Footer */
+  .page-footer {
+    background: var(--navy);
+    padding: 18px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+  }
+  .footer-brand {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    color: var(--gold-light);
+    font-weight: 600;
+  }
+
+  /* Reasoning block */
+  .reasoning {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-bottom: 6px;
+  }
+  .reasoning p { font-size: 13px; color: #4a5568; line-height: 1.8; margin-bottom: 8px; }
+  .reasoning p:last-child { margin-bottom: 0; }
+  .reasoning strong { color: var(--navy); font-weight: 600; }
+
+  .highlight-box {
+    background: #fff8e8;
+    border: 1px solid #f5d98a;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 12px 0;
+    font-size: 13px;
+    color: #7c5c1e;
+    line-height: 1.7;
+  }
+  .highlight-box strong { color: #5a3e0a; }
+
+  @media (max-width: 600px) {
+    body { font-size: 15px; }
+    .page-header { padding: 20px 18px; gap: 14px; flex-wrap: wrap; }
+    .header-brand-mark { order: -1; width: 100%; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 12px; margin-bottom: 4px; }
+    .brand-logo { font-size: 20px; }
+    .brand-sub { font-size: 9px; margin-top: 0; }
+    .header-divider { display: none; }
+    .avatar { width: 56px; height: 56px; }
+    .header-name { font-size: 22px; }
+    .header-sub { font-size: 12px; }
+    .header-badge { padding: 8px 14px; }
+    .header-badge .score-big { font-size: 26px; }
+    .container { padding: 20px 16px 48px; }
+    .section-title { font-size: 15px; margin-top: 24px; }
+    .score-grid { grid-template-columns: repeat(2, 1fr); }
+    .score-card .val { font-size: 22px; }
+    .feedback-card { padding: 14px 16px; }
+    .feedback-row { gap: 12px; }
+    .feedback-text .desc { font-size: 14px; }
+    .tl-body { padding: 12px 14px; }
+    .tl-title { font-size: 14px; }
+    .tl-sub { font-size: 13px; }
+    .plan-header { padding: 12px 16px; }
+    .plan-header h3 { font-size: 14px; }
+    .plan-body { padding: 14px 16px; }
+    .course-name { font-size: 14px; }
+    .course-detail { font-size: 13px; }
+    .total-row { padding: 14px 16px; flex-wrap: wrap; gap: 8px; }
+    .total-price { font-size: 22px; }
+    .value-list { grid-template-columns: 1fr; }
+    .value-text .vt { font-size: 13px; }
+    .value-text .vs { font-size: 12px; }
+    .consultant-note { padding: 18px 18px; }
+    .cn-text { font-size: 13px; }
+    .page-footer { padding: 14px 18px; flex-direction: column; gap: 4px; text-align: center; }
+    .reasoning p { font-size: 14px; }
+    .highlight-box { font-size: 13px; }
+    .teacher-note { font-size: 13px; }
+  }
+
+  @media print {
+    body { background: #fff; }
+    .container { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="header-brand-mark">
+    <div class="brand-logo">新航道</div>
+    <div class="brand-sub">NEW CHANNEL INTERNATIONAL EDUCATION</div>
+  </div>
+  <div class="header-divider"></div>
+  <div class="avatar">
+    <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="8" r="4" fill="rgba(255,255,255,0.9)"/>
+      <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" fill="none"/>
+    </svg>
+  </div>
+  <div class="header-info">
+    <div class="header-name">曾子嫣 <span style="font-family:'Noto Sans SC',sans-serif; font-size:13px; font-weight:500; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); border-radius:20px; padding:3px 12px; letter-spacing:0.5px; vertical-align:middle; color:#fff;">词汇水平 A2–B1</span></div>
+    <div class="header-sub">入学测试报告 · 课程规划方案 · 2026</div>
+  </div>
+  <div class="header-badge">
+    <div class="score-big">58</div>
+    <div class="score-label">入学总分 / 80</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Test Score Analysis -->
+  <div class="section-title">📊 入学测试成绩分析</div>
+
+  <div class="score-grid">
+    <div class="score-card weak">
+      <div class="dim">词汇</div>
+      <div class="val">11<span class="total">/20</span></div>
+      <div class="bar-wrap"><div class="bar-fill" style="width:55%"></div></div>
+    </div>
+    <div class="score-card weak">
+      <div class="dim">语法</div>
+      <div class="val">11<span class="total">/20</span></div>
+      <div class="bar-wrap"><div class="bar-fill" style="width:55%"></div></div>
+    </div>
+    <div class="score-card strong">
+      <div class="dim">阅读</div>
+      <div class="val">18<span class="total">/20</span></div>
+      <div class="bar-wrap"><div class="bar-fill" style="width:90%"></div></div>
+    </div>
+    <div class="score-card strong">
+      <div class="dim">听力</div>
+      <div class="val">18<span class="total">/20</span></div>
+      <div class="bar-wrap"><div class="bar-fill" style="width:90%"></div></div>
+    </div>
+  </div>
+
+  <div class="reasoning" style="margin-top:14px;">
+    <p>测试结果显示，子嫣同学<strong>阅读与听力基础相对较好</strong>（各18/20），具备较强的语言感知和接受能力，这对后续雅思学习是重要优势。</p>
+    <p><strong>词汇和语法（各11/20，约55%）</strong>是当前主要短板——雅思题型中近60%的失分点与词汇识别和语法理解直接相关，需要系统补足。综合得分58/80，位于L3入班线附近。</p>
+  </div>
+
+  <!-- Trial Teacher Feedback -->
+  <div class="section-title">🎧 试听课老师反馈摘要</div>
+
+  <div class="feedback-card">
+    <div class="feedback-row">
+      <div class="feedback-icon fi-orange">📚</div>
+      <div class="feedback-text">
+        <div class="label">词汇基础</div>
+        <div class="desc">当前词汇水平处于 A2–B1 之间。部分词汇能认出但无法准确回忆，建议后期从"音形义"三个维度同步积累，形成稳固的词汇网络。</div>
+      </div>
+    </div>
+    <div class="feedback-row">
+      <div class="feedback-icon fi-blue">👂</div>
+      <div class="feedback-text">
+        <div class="label">听力基础</div>
+        <div class="desc">主要问题在于<strong>词汇辨音能力偏弱</strong>，对连读、弱化发音识别不稳定，影响对完整语义的同步理解。需要通过大量精听训练，让耳朵建立对发音的肌肉记忆。</div>
+      </div>
+    </div>
+    <div class="feedback-row">
+      <div class="feedback-icon fi-red">🗣️</div>
+      <div class="feedback-text">
+        <div class="label">口语基础</div>
+        <div class="desc">前期表达存在<strong>"卡壳"现象</strong>，组织语言逻辑时犹豫较多。学习表述逻辑框架后，经过练习能完整表达。建议前期句子语音语调可适当夸张，强化开口信心。</div>
+      </div>
+    </div>
+    <div class="feedback-row">
+      <div class="feedback-icon fi-green">✅</div>
+      <div class="feedback-text">
+        <div class="label">课堂学习能力</div>
+        <div class="desc">全程参与练习，按要求完成口语和听力任务，<strong>理解讲解内容速度较快</strong>，学习态度积极，是可以上 L3 班课的重要依据。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="teacher-note">
+    <strong>老师原始建议：</strong>综合词汇基础（A2–B1）及口语卡壳现象，理想状态从 L2 开始或 L3 放慢节奏学习，避免跳过基础导致后期积累困难。<br>
+    <strong>最终共识：</strong>鉴于子嫣阅读/听力优秀、理解力强，接受从 L3 出发，<strong>扩充课时至 90 小时</strong>（标准60H基础上增加30H），确保词汇语法有充分的打磨周期，相当于实现"慢速 L3"的教学效果。
+  </div>
+
+  <!-- Learning Path -->
+  <div class="section-title">🗺️ 个性化学习路径规划</div>
+
+  <div class="timeline">
+    <div class="tl-item active">
+      <div class="tl-dot"></div>
+      <div class="tl-body">
+        <div class="tl-title">阶段一：留学预备三级（L3）打基础</div>
+        <div class="tl-sub">1对1专属授课，系统学习L3阶段词汇、语法、听说读写，重点补足词汇辨音与口语表达逻辑。延长课时至90H，等同于"慢速L3"节奏，老师可根据子嫣掌握情况随时调整重难点比例，完整覆盖老师建议的L2→L3过渡知识点。</div>
+        <span class="tl-tag tag-now">当前开始</span>
+      </div>
+    </div>
+    <div class="tl-item final">
+      <div class="tl-dot"></div>
+      <div class="tl-body">
+        <div class="tl-title">阶段二：雅思一对一四科全面提升</div>
+        <div class="tl-sub">在L3基础上，1对1进入雅思系统学习，四科听说读写全面推进，老师可针对性强化子嫣的听力辨音和口语输出短板。90小时课时充足，目标建立雅思6.0分备考状态。全程配合阶段测评与模拟考试，实时调整各科课时比例。</div>
+        <span class="tl-tag tag-next">L3结课后衔接</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Course Plan & Pricing -->
+  <div class="section-title">💰 最终课程方案与报价</div>
+
+  <div class="highlight-box">
+    根据与子嫣同学沟通后的最终方案：<strong>留学预备L3（90小时）+ 雅思一对一（90小时）</strong>，共计180小时全程1对1，整体享受 <strong>85折优惠</strong>。
+  </div>
+
+  <div class="plan-box">
+    <div class="plan-header">
+      <h3>曾子嫣 · 全程一对一定制方案</h3>
+      <div class="plan-tag">85折</div>
+    </div>
+    <div class="plan-body">
+
+      <div class="course-row">
+        <div class="course-icon ci-navy">📗</div>
+        <div class="course-info">
+          <div class="course-name">留学预备三级（L3）一对一</div>
+          <div class="course-detail">90小时 · 词汇语法夯实 · 听说综合提升 · 完整覆盖L2→L3过渡知识点 · 进度按掌握情况随时调整</div>
+        </div>
+      </div>
+
+      <div class="course-row">
+        <div class="course-icon ci-teal">📘</div>
+        <div class="course-info">
+          <div class="course-name">雅思一对一全科系统课程</div>
+          <div class="course-detail">90小时 · 听说读写四科全面推进 · 重点强化听力辨音与口语输出 · 含阶段模拟测评与作业批改</div>
+        </div>
+      </div>
+
+      <div style="border-top: 1px solid var(--border); padding-top: 16px; margin-top: 8px;">
+        <div style="display:flex; justify-content:space-between; font-size:13px; color:var(--muted); margin-bottom:6px;">
+          <span>总课时</span><span>180 小时</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; font-size:13px; color:var(--muted); margin-bottom:6px;">
+          <span>原价（L3 90H × 450 + 雅思 90H × 620）</span><span>¥96,300 元</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; font-size:13px; color:var(--muted); margin-bottom:14px;">
+          <span>85折优惠节省</span><span style="color:#c0392b;">－¥14,445 元</span>
+        </div>
+      </div>
+
+      <div class="total-row">
+        <div class="total-label">一次性报名总价</div>
+        <div class="discount-badge">85折</div>
+        <div>
+          <div class="total-price">¥81,855<span class="total-unit">元</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Value-added services -->
+  <div class="section-title">🎁 增值服务说明</div>
+
+  <div class="value-list">
+    <div class="value-item">
+      <div class="value-icon">🎯</div>
+      <div class="value-text">
+        <div class="vt">完全个性化进度</div>
+        <div class="vs">1对1授课根据子嫣实际掌握情况随时调整节奏，词汇语法弱点可深度强化</div>
+      </div>
+    </div>
+    <div class="value-item">
+      <div class="value-icon">🗣️</div>
+      <div class="value-text">
+        <div class="vt">助教口语陪练服务</div>
+        <div class="vs">专属助教配合授课老师进行口语陪练，课后持续巩固表达逻辑与开口信心</div>
+      </div>
+    </div>
+    <div class="value-item">
+      <div class="value-icon">📊</div>
+      <div class="value-text">
+        <div class="vt">阶段测评跟踪</div>
+        <div class="vs">L3结课测评 + 雅思阶段模拟测试，数据化呈现学习效果，随时调整策略</div>
+      </div>
+    </div>
+    <div class="value-item">
+      <div class="value-icon">🏆</div>
+      <div class="value-text">
+        <div class="vt">雅思官考代报</div>
+        <div class="vs">成都新航道官考代报资质（TS028020），同步获取每周考情预测与备考计划</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Consultant note -->
+  <div class="consultant-note">
+    <div class="cn-title">顾问综合建议</div>
+    <div class="cn-text">
+      子嫣同学的基础特点很典型：<strong>理解接收能力强（阅读听力良好），主动输出能力待提升（词汇口语偏弱）</strong>。这类学生往往进步很快，因为"听得懂"是学习的先决条件，她已经具备了。
+      <br><br>
+      将L3课时延长至90小时，是兼顾老师建议与学生意愿的最优解：既不从头重读L2浪费时间，又通过充足课时让词汇语法打牢，实际学习密度和L2→L3过渡效果相当。雅思90小时1对1紧随其后，确保两个阶段无缝衔接，整体学习节奏紧凑而不仓促。
+      <br><br>
+      根据以往相似基础学员的案例，扎实完成这180小时后，通常能达到<strong>雅思6.5分+的水平</strong>，是非常有竞争力的留学申请起点。
+    </div>
+    <div class="cn-sig">新航道成都 · 课程主管龚老师 18512820890</div>
+  </div>
+
+</div>
+
+<div class="page-footer">
+  <div class="footer-brand">新航道国际教育集团 · 成都</div>
+  <div>本方案仅供学生本人及家人查看，请勿转发他人</div>
+</div>
+
+</body>
+</html>
